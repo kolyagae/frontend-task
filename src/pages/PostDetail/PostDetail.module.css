@@ -1,9 +1,10 @@
 .fullPostCard {
+  margin-top: 30px;
   border-radius: 18px;
-  background: var(--secondary-bg-color);
-  box-shadow: 5px 5px 10px #e0e0e0;
-  width: 50%;
-  padding: 20px;
+  /* background: var(--secondary-bg-color); */
+  /* box-shadow: 5px 5px 10px #e0e0e0; */
+  /* width: 50%; */
+  padding: 50px 20px;
 }
 
 .postTitle {
@@ -14,4 +15,9 @@
 .postBody {
   padding: 10px;
   font-size: 18px;
+}
+
+.divider {
+  width: 100%;
+  margin-bottom: 80px;
 }

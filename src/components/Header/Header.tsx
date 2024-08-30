@@ -10,8 +10,6 @@ const Header = () => {
   const { pathname } = useLocation();
   const dispatch = useAppDispatch();
 
-  console.log("pathname :>> ", pathname);
-
   const logOut = () => {
     dispatch(clearUser());
     dispatch(showToast({ message: "Session ended" }));

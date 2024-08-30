@@ -3,8 +3,9 @@
   --secondary-bg-color: #ffffff;
   --toast-success-color: #4caf50;
   --toast-error-color: #f44336;
-  --link-color: #007bff;
+  --accent-blue-color: #007bff;
   --font-color: #333;
+  --border-color: var(--border-color);
 }
 
 * {
@@ -41,7 +42,7 @@ main {
 
 a {
   text-decoration: none;
-  color: var(--link-color);
+  color: var(--accent-blue-color);
 }
 
 button {
