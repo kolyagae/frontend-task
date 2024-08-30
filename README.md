@@ -1,50 +1,96 @@
-# React + TypeScript + Vite
+## Описание проекта
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Это веб-приложение, разработанное с использованием React, TypeScript и Redux. Приложение взаимодействует с API для получения и отображения данных постов и пользователей.
 
-Currently, two official plugins are available:
+### Макеты страниц
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Приложение состоит из трех основных страниц:
 
-## Expanding the ESLint configuration
+1. **Главная страница** - отображает список постов.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+<img width="1438" alt="Главная страница" src="https://github.com/user-attachments/assets/eaa8ee48-40c1-497a-ade0-46ef8392d437">
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. **Страница входа** - предоставляет возможность авторизации пользователей.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+<img width="1434" alt="Страница входа" src="https://github.com/user-attachments/assets/5262e76a-9988-4c7c-95cb-a639048f2e87">
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+3. **Страница поста** - страницу где указана вся информация о посте и написаны комментарии, которые принадлежат именно этому посту.
+
+<img width="1430" alt="Страница поста" src="https://github.com/user-attachments/assets/1dfe67c1-a379-421d-824c-3e29feaf6e50">
+
+## Функциональность
+
+- При загрузке приложения выполняется запрос к API для получения и отрисовки постов: 
+  - `GET: https://jsonplaceholder.typicode.com/posts`
+  
+- Пользователь может авторизоваться, введя имя пользователя на странице входа (проверка осуществляется с учтеом регистра):
+  - `GET: https://jsonplaceholder.typicode.com/users?username=<username>`, где `<username>` - имя, введенное пользователем.
+
+- Если данные пользователя найдены, они сохраняются в глобальном хранилище (Redux), и кнопка "Sign In" заменяется на "Log Out", которая очищает данные пользователя.
+- При успешной авторизации происходит редирект на главную страницу. Если пользователь не найден, выводится уведомление об ошибке через Toast.
+- При выходе из аккаунта ("Log Out") пользователь получает уведомление о завершении сессии через Toast.
+
+- По нажатию на карточку происходит редирект на страницу, где указана вся информация о посте и написаны комментарии, которые принадлежат именно этому посту.
+  - `GET: https://jsonplaceholder.typicode.com/comments` 
+
+## Технологии
+
+- JavaScript (ES6+)
+- React (последняя версия)
+- TypeScript
+- Redux Toolkit
+- React Router DOM
+- Модульный CSS
+- Docker
+
+## Установка и запуск
+
+#### Вариант №1
+
+1. Запустите Docker Desktop.
+2. В терминале введите команду:
+
+   ```bash
+   docker run -p 3000:3000 kolyagae/frontend-task:latest
+   ```
+3. Откройте браузер и перейдите по адресу:
+
+   ```bash
+   http://localhost:3000/
+   ```
+
+#### Вариант №2
+1. Клонируйте репозиторий:
+
+   ```bash
+   git clone https://github.com/kolyagae/frontend-task.git
+   ```
+2. Перейдите в директорию с проектом:
+  
+   ```bash
+   cd <имя директории>
+   ```
+3. Перейдите в ветку разработки:
+  
+   ```bash
+   git checkout develop
+   ```
+   
+4. Установите зависимости:
+   
+   ```bash
+   npm install
+   ```
+
+5. Запустите проект:
+- используя сборщик Vite:
+
+  ```bash
+   npm run dev
+   ```
+- используя Docker:
+    ```bash
+   docker-compose up
+   ```
