@@ -58,7 +58,7 @@
 3. Откройте браузер и перейдите по адресу:
 
    ```bash
-   http://localhost:3000/
+   http://localhost:3000
    ```
 
 #### Вариант №2
@@ -89,8 +89,14 @@
 
   ```bash
    npm run dev
+  ```
+  ```bash
+   http://localhost:8080
    ```
 - используя Docker:
-    ```bash
+  ```bash
    docker-compose up
-   ```
+  ```
+  ```bash
+   http://localhost:3000
+  ```
